@@ -48,8 +48,8 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: install pnpm
-          run: |
-            npm install pnpm -g
+        run: |
+          npm install pnpm -g
 
       - name: install Rust stable
         uses: dtolnay/rust-toolchain@stable
