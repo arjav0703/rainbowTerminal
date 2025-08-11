@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { Terminal as XTerm } from '@xterm/xterm';
-import { FitAddon } from '@xterm/addon-fit';
-import { invoke } from '@tauri-apps/api';
-import '@xterm/xterm/css/xterm.css';
+import { useEffect, useRef, useState } from "react";
+import { Terminal as XTerm } from "@xterm/xterm";
+import { FitAddon } from "@xterm/addon-fit";
+import { invoke } from "@tauri-apps/api";
+import "@xterm/xterm/css/xterm.css";
 
 export default function Terminal() {
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -18,13 +18,13 @@ export default function Terminal() {
     // Create terminal instance
     const newFitAddon = new FitAddon();
     const newTerm = new XTerm({
-      fontFamily: 'Jetbrains Mono',
+      fontFamily: "Jetbrains Mono",
       allowTransparency: true,
       cursorBlink: true,
-      cursorStyle: 'bar',
+      cursorStyle: "bar",
       theme: {
-        background: 'transparent',
-        foreground: '#ff0000',
+        background: "#000000",
+        foreground: "#ffffff",
       },
     });
 
@@ -37,10 +37,10 @@ export default function Terminal() {
     // Initialize shell
     const initShell = async () => {
       try {
-        await invoke('async_create_shell');
+        await invoke("async_create_shell");
       } catch (error) {
         // On Linux it might show "Operation not permitted (os error 1)" but still works
-        console.error('Error creating shell:', error);
+        console.error("Error creating shell:", error);
       }
     };
 
@@ -57,7 +57,7 @@ export default function Terminal() {
 
     // Write data from the terminal to the pty
     const writeToPty = (data: string) => {
-      invoke('async_write_to_pty', { data }).catch(console.error);
+      invoke("async_write_to_pty", { data }).catch(console.error);
     };
 
     // Register the data handler
@@ -70,7 +70,7 @@ export default function Terminal() {
 
     const fitTerminal = async () => {
       fitAddon.fit();
-      await invoke('async_resize_pty', {
+      await invoke("async_resize_pty", {
         rows: term.rows,
         cols: term.cols,
       }).catch(console.error);
@@ -78,10 +78,10 @@ export default function Terminal() {
 
     // Fit terminal initially and on window resize
     fitTerminal();
-    window.addEventListener('resize', fitTerminal);
+    window.addEventListener("resize", fitTerminal);
 
     return () => {
-      window.removeEventListener('resize', fitTerminal);
+      window.removeEventListener("resize", fitTerminal);
     };
   }, [term, fitAddon]);
 
@@ -99,7 +99,7 @@ export default function Terminal() {
 
     const readFromPty = async () => {
       try {
-        const data = await invoke<string>('async_read_from_pty');
+        const data = await invoke<string>("async_read_from_pty");
 
         if (data) {
           await writeToTerminal(data);
@@ -107,7 +107,7 @@ export default function Terminal() {
 
         frameId = window.requestAnimationFrame(readFromPty);
       } catch (error) {
-        console.error('Error reading from PTY:', error);
+        console.error("Error reading from PTY:", error);
         frameId = window.requestAnimationFrame(readFromPty);
       }
     };

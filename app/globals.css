@@ -1,32 +1,19 @@
 body {
-  margin: 0;
-  background: rgb(47, 47, 47);
-  overflow: hidden;
+    margin: 0;
+    background: #000000;
+    overflow: hidden;
 }
 
 #terminal {
-  height: 100vh;
-  width: 100vw;
-  background: linear-gradient(
-    120deg,
-    #ff0040,
-    #ff7a00,
-    #ffd400,
-    #40ff00,
-    #00ffd5,
-    #007bff,
-    #7a00ff,
-    #ff00c8,
-    #ff0040
-  );
-  background-size: 400% 400%;
-  animation: rainbow-shift 20s linear infinite;
+    height: 100vh;
+    width: 100vw;
+    background-color: #000000;
 }
 
 .xterm,
 .xterm .xterm-viewport,
 .xterm .xterm-screen {
-  background-color: transparent !important;
+    background-color: #000000 !important;
 }
 
 .xterm canvas,
@@ -34,47 +21,63 @@ body {
 .xterm .xterm-screen canvas,
 .xterm-screen canvas.xterm-text-layer,
 canvas.xterm-text-layer {
-  animation: rainbow-hue 8s linear infinite !important;
-  will-change: filter;
+    animation: rainbow-hue 8s linear infinite !important;
+    will-change: filter;
 }
 
 .xterm .xterm-rows {
-  animation: rainbow-hue 8s linear infinite;
-  will-change: filter;
+    background: linear-gradient(
+        120deg,
+        #ff0040,
+        #ff7a00,
+        #ffd400,
+        #40ff00,
+        #00ffd5,
+        #007bff,
+        #7a00ff,
+        #ff00c8,
+        #ff0040
+    );
+    background-size: 400% 400%;
+    animation: rainbow-shift 20s linear infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    will-change: filter;
 }
 
 @keyframes rainbow-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 @keyframes rainbow-hue {
-  0% {
-    filter: hue-rotate(0deg) saturate(200%) brightness(1.2);
-  }
-  16.66% {
-    filter: hue-rotate(60deg) saturate(200%) brightness(1.2);
-  }
-  33.33% {
-    filter: hue-rotate(120deg) saturate(200%) brightness(1.2);
-  }
-  50% {
-    filter: hue-rotate(180deg) saturate(200%) brightness(1.2);
-  }
-  66.66% {
-    filter: hue-rotate(240deg) saturate(200%) brightness(1.2);
-  }
-  83.33% {
-    filter: hue-rotate(300deg) saturate(200%) brightness(1.2);
-  }
-  100% {
-    filter: hue-rotate(360deg) saturate(200%) brightness(1.2);
-  }
+    0% {
+        filter: hue-rotate(0deg) saturate(200%) brightness(1.5);
+    }
+    16.66% {
+        filter: hue-rotate(60deg) saturate(200%) brightness(1.5);
+    }
+    33.33% {
+        filter: hue-rotate(120deg) saturate(200%) brightness(1.5);
+    }
+    50% {
+        filter: hue-rotate(180deg) saturate(200%) brightness(1.5);
+    }
+    66.66% {
+        filter: hue-rotate(240deg) saturate(200%) brightness(1.5);
+    }
+    83.33% {
+        filter: hue-rotate(300deg) saturate(200%) brightness(1.5);
+    }
+    100% {
+        filter: hue-rotate(360deg) saturate(200%) brightness(1.5);
+    }
 }
