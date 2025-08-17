@@ -1,7 +1,17 @@
 # rainbowTerminal
 
-A simple terminal application that displays a rainbow of colors in the terminal.
+A colorful terminal emulator app filled with colors
 
+## Using the app
+   ```bash
+    # CLONE THE REPO
+    git clone https://github.com/arjav0703/rainbowTerminal.git
+    cd rainbowTerminal
+    # INSTALL DEPENDENCIES
+    pnpm install
+    # START THE APP
+    pnpm tauri dev
+   ```
 #### Image
 ![Rainbow Terminal](https://hc-cdn.hel1.your-objectstorage.com/s/v3/d0a735a778b71964dcec07e159ddae623faf2862_image.png)
 <div align="center">
