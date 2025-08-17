@@ -18,7 +18,7 @@ export default function Terminal() {
     // Create terminal instance
     const newFitAddon = new FitAddon();
     const newTerm = new XTerm({
-      fontFamily: "Jetbrains Mono",
+      fontFamily: "'Fira Code', 'JetBrains Mono', Menlo, Monaco, Consolas, 'Courier New', monospace",
       allowTransparency: true,
       cursorBlink: true,
       cursorStyle: "bar",
